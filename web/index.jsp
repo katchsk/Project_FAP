@@ -19,7 +19,7 @@
         <div id="header">
             
         </div>
-        <div id="container">
+        <div id="loginContainer">
             <div id="logoWeb">
                 <img src="images/logo.png" alt="Flashwiz Logo">
                 <p id="websiteName">Flashwiz</p>
