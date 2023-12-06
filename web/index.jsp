@@ -12,6 +12,26 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello Universe!</h1>
+        <div id="header">
+            
+        </div>
+        <div id="logoWeb">
+            <img src="/images/" alt="">
+            <p id="websiteName">Website Name</p>
+        </div>
+        <div id="login">
+            <h1>Login</h1>
+            <form action="login" method="post">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required><br>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required><br><br>
+                <p id="guestButton">Login as <a href="home.jsp">Guest</a>?</p>
+                <input type="submit" value="Login">
+            </form>
+        </div>
+        <div id="footer">
+            
+        </div>
     </body>
 </html>
