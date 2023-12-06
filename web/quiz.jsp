@@ -26,8 +26,8 @@
             </div>
 
             <div id="controlButtons">
-                <button class="button">Previous</button>
-                <button class="button">Next</button>
+                <button class="buttonPrevious">Previous</button>
+                <button class="buttonNext">Next</button>
             </div>
         </div>
         <div id="footer">

@@ -105,13 +105,20 @@ body {
     max-width: 600px;
     margin: 0 auto;
     text-align: center;
+    grid-row: 2;
+    position: relative;
+    margin-top: 10px;
 }
 
 #questionBlock {
     background-color: #f0f0f0;
     padding: 20px;
-    margin-bottom: 20px;
     border-radius: 10px;
+    width: 550px;
+    height: 350px;
+    margin: 0 auto;
+    word-wrap: break-word;
+    overflow: auto;
 }
 
 #controlButtons {
@@ -120,7 +127,9 @@ body {
     margin-top: 10px;
 }
 
-.button {
+.buttonPrevious,
+.buttonNext {
+    width: calc(50% - 100px); /* Set the width to 50% with a small margin */
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
