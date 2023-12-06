@@ -2,7 +2,7 @@
 #header,
 #footer {
     background: linear-gradient(to right, #003f67, #1b81c2);
-    height: 50px;
+    height: 5vw;
 }
 
 #footer {
@@ -18,8 +18,8 @@ body {
 }
 
 #container {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* 1fr for logoWeb, 2fr for login */
     align-items: center;
     padding: 2%; /* Use percentage-based padding for flexibility */
     margin-top: 0vw;
@@ -29,7 +29,6 @@ body {
     display: flex;
     flex-direction: column; /* Stack elements vertically */
     align-items: center;
-    margin-left: 15%; /* Use percentage-based margin for flexibility */
 }
 
 #logoWeb img {
@@ -46,7 +45,6 @@ body {
 #login {
     display: flex;
     flex-direction: column;
-    margin-right: 20vw; /* Use percentage-based margin for flexibility */
     padding: 2%; /* Use percentage-based padding for flexibility */
     color: black; /* Adjust text color as needed */
 }
@@ -58,7 +56,7 @@ body {
 
 #loginLabel {
     margin-bottom: 1vw; /* Use viewport units for responsive margin */
-    margin-left: 11vw;
+    margin-left: 20vw;
     font-family: 'Lato', sans-serif;
     font-size: 1.3vw;
     color: black;
@@ -74,7 +72,7 @@ body {
 
 #login input[type="text"],
 #login input[type="password"] {
-    width: 30vw;
+    width: 80%; /* Use percentage-based width for responsiveness */
     padding: 1vw; /* Use viewport units for responsive padding */
     margin-bottom: 1vw; /* Use viewport units for responsive margin */
     border-radius: 10px;
