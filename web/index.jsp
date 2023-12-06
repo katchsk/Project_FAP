@@ -10,6 +10,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="styles.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lato&family=Poppins:wght@500&display=swap" rel="stylesheet">
         <title>Flashwiz</title>
     </head>
     <body>
@@ -26,9 +29,9 @@
                     <h1>Login</h1>
                 </div>
                 <form action="login" method="post">
-                    <label for="username">Username:</label>
+                    <label for="username">Username</label>
                     <input type="text" id="username" name="username" required><br>
-                    <label for="password">Password:</label>
+                    <label for="password">Password</label>
                     <input type="password" id="password" name="password" required><br><br>
                     <p id="guestButton">Login as <a href="dashboard.jsp">Guest</a>?</p>
                     <button type="submit">
