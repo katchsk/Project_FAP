@@ -17,7 +17,8 @@
     </head>
     <body>
         <div id="header">
-
+            <img src="images/logo.png" alt="Flashwiz Logo">
+            <p id="websiteName">Flashwiz</p>
         </div>
         <div id="quizContainer">
             <div id="questionBlock">
@@ -31,7 +32,7 @@
             </div>
         </div>
         <div id="footer">
-
+            <button class="home">Home</button>
         </div>
     </body>
 </html>

@@ -3,12 +3,21 @@
 #footer {
     background: linear-gradient(to right, #003f67, #1b81c2);
     height: 5vw;
+    display: flex;
 }
 
-#footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+#header p {
+    font-size: 2vw;
+    font-family: 'Poppins', sans-serif;
+    color: white; /* Adjust text color as needed */
+    margin-top: 13px;
+    margin-left: 10px;
+}
+
+#header img {
+    max-height: 5vw; /* Use viewport width for responsive image height */
+    margin-left: 10px;
+    border-radius: 50%;
 }
 
 /* index.jsp */
@@ -137,6 +146,18 @@ body {
     color: #fff;
     border: none;
     border-radius: 5px;
+}
+
+.home{
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    margin-top: 10px;
 }
 
 /* settingUser.jsp */
