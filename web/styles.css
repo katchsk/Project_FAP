@@ -17,7 +17,7 @@ body {
     font-family: Arial, sans-serif;
 }
 
-#container {
+#loginContainer {
     display: grid;
     grid-template-columns: 1fr 2fr; /* 1fr for logoWeb, 2fr for login */
     align-items: center;
@@ -99,6 +99,38 @@ body {
     color: black; /* Adjust text color as needed */
 }
 
+/* quiz.jsp */
+
+#quizContainer {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#questionBlock {
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+#controlButtons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+/* settingUser.jsp */
 #userSettings {
     display: flex;
     flex-direction: column;
