@@ -315,7 +315,7 @@
             <h2>Create a Flashcard</h2>
 
             <!-- Add a form element -->
-            <form id="flashcardForm" method="GET" action="#">
+            <form id="flashcardForm" method="POST" action="CreateFlashcard">
                 <label for="question">Question:</label>
                 <input type="text" id="question" name="question" required>
 
@@ -371,7 +371,27 @@
 //            closeModal();
         }
         
-        function createCard() {
+        function deleteCard(cardIndex){
+            // Create a form element
+            var form = document.createElement('form');
+            form.method = 'POST';
+            form.action = 'DeleteFlashcard';  // Specify the target URL
+
+            // Create input elements for each parameter you want to send
+            var input1 = document.createElement('input');
+            input1.type = 'hidden';
+            input1.name = 'CardIndex';
+            input1.value = cardIndex;
+            form.appendChild(input1);
+
+            // Optionally, append the form to the document (hidden forms can be submitted)
+            document.body.appendChild(form);
+
+            // Submit the form
+            form.submit();
+        }
+        
+        function createCard(question, answer, index) {
             // Create the main div element with the "card" class
             const cardDiv = document.createElement("div");
             cardDiv.className = "card";
@@ -386,11 +406,15 @@
 
             // Append the delete icon to its container
             deleteIconContainer.appendChild(deleteIcon);
+            deleteIconContainer.onclick = function(){
+                console.log("hi");
+                deleteCard(index);
+            }
 
             // Create the card title
             const cardTitle = document.createElement("div");
             cardTitle.className = "card-title";
-            cardTitle.textContent = "Flashcard #1";
+            cardTitle.textContent = "Flashcard #" + (index + 1);
 
             // Create the question section
             const cardQuestion = document.createElement("div");
@@ -399,7 +423,7 @@
 
             const cardQuestionText = document.createElement("div");
             cardQuestionText.className = "card-question-text truncate";
-            cardQuestionText.textContent = "What is this?";
+            cardQuestionText.textContent = question;
 
             // Create the card spacing
             const cardSpacing = document.createElement("div");
@@ -412,7 +436,7 @@
 
             const cardAnswerText = document.createElement("div");
             cardAnswerText.className = "card-answer-text";
-            cardAnswerText.textContent = "The blah blah is...";
+            cardAnswerText.textContent = answer;
 
             // Append all elements to the main card div
             cardDiv.appendChild(deleteIconContainer);
@@ -425,18 +449,64 @@
 
             return cardDiv;
         }
-        
-        console.log( <%=Math.random()%> );
-        
-        const innerCardsElement = document.querySelector(".inner-cards");
-        if (innerCardsElement) {
-            for (let i = 0; i < 5; i++) {
-                const cardElement = createCard();
-                innerCardsElement.appendChild(cardElement);
+       
+       
+        <%@ page import="java.util.ArrayList" %>
+
+        <% 
+           ArrayList<ArrayList<String>> arrayFromServer = (ArrayList<ArrayList<String>>) session.getAttribute("CardList");
+           
+           if (arrayFromServer != null) {
+//             System.out.println(arrayFromServer);
+           }
+        %>
+            
+//        <% 
+            StringBuilder jsArray = new StringBuilder("[");
+            if (arrayFromServer != null) {
+                for (int i = 0; i < arrayFromServer.size(); i++) {
+                    jsArray.append("[");
+                    ArrayList<String> innerList = arrayFromServer.get(i);
+                    for (int j = 0; j < innerList.size(); j++) {
+                        jsArray.append("\"").append(innerList.get(j)).append("\"");
+                        if (j < innerList.size() - 1) {
+                            jsArray.append(",");
+                        }
+                    }
+                    jsArray.append("]");
+                    if (i < arrayFromServer.size() - 1) {
+                        jsArray.append(",");
+                    }
+                }
+                jsArray.append("]");
             }
-        } else {
-            console.error("Element with class 'inner-cards' not found.");
+        %>
+            
+        let arrayString = '<%= jsArray.toString() %>';
+        let cardList = null;
+        
+        if (arrayString != '[') {
+            let jsonArray = arrayString.replace(/'/g, '"'); // Replace single quotes with double quotes
+            cardList = JSON.parse(jsonArray);
+
+            console.log(cardList);  
         }
+ 
+        function updateBoard() {
+            const innerCardsElement = document.querySelector(".inner-cards");
+            if (cardList && innerCardsElement) {
+                for (let i = 0; i < cardList.length; i++){
+                    const question = cardList[i][0];
+                    const answer = cardList[i][1];
+
+                    const cardElem = createCard(question, answer, i);
+                    innerCardsElement.appendChild(cardElem);
+                }  
+            }
+        }
+        
+        
+        updateBoard();
     </script>        
         
     </body>
