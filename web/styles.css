@@ -131,7 +131,7 @@ body {
     width: 500px;
     height: 350px;
     transform-style: preserve-3d;
-    transition: transform 0.5s;
+    transition: transform 0.5s ease-in-out; /* Added ease-in-out for a smoother transition */
     cursor: pointer;
     position: relative;
 }
@@ -152,8 +152,9 @@ body {
     transform: rotateX(180deg);
 }
 
-.card.flipped {
+.quizCard.flipped {
     transform: rotateX(180deg);
+    transform-style: preserve-3d; /* Added transform-style for maintaining 3D effect */
 }
 
 #questionBlock,
