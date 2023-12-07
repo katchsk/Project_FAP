@@ -4,6 +4,6 @@
  */
 
 function flipCard() {
-    const card = document.querySelector('.card');
+    const card = document.querySelector('.quizCard');
     card.classList.toggle('flipped');
 }
