@@ -17,22 +17,33 @@
         <servlet-class>loginServlet</servlet-class>
         <init-param>
             <param-name>adminUsername</param-name>
-            <param-value>admin123</param-value>
+            <param-value>admin123</param-value> 
             <!-- Set username here -->
         </init-param>
         <init-param>
             <param-name>adminPassword</param-name>
-            <param-value>adminpassword</param-value>
+            <param-value>adminpassword</param-value> 
             <!-- Set password here -->
         </init-param>
     </servlet>
     <servlet>
-        <servlet-name>NewServlet</servlet-name>
-        <servlet-class>NewServlet</servlet-class>
+        <servlet-name>CreateFlashcardServlet</servlet-name>
+        <servlet-class>CreateFlashcardServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteFlashcardServlet</servlet-name>
+        <servlet-class>DeleteFlashcardServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>loginServlet</servlet-name>
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
-    
+    <servlet-mapping>
+        <servlet-name>CreateFlashcardServlet</servlet-name>
+        <url-pattern>/CreateFlashcard</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteFlashcardServlet</servlet-name>
+        <url-pattern>/DeleteFlashcard</url-pattern>
+    </servlet-mapping>
 </web-app>
