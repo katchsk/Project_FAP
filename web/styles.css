@@ -158,7 +158,7 @@ body {
 
 #questionBlock,
 #answerBlock {
-    background-color: #BDBDBD;
+    background-color: #F0F0F0;
     padding: 20px;
     border-radius: 10px;
     width: 100%; /* Use 100% width for responsiveness */
@@ -170,7 +170,7 @@ body {
 
 #questionBlock:hover,
 #answerBlock:hover {
-    background-color: #A2A2A2;
+    background-color: #BDBDBD;
 }
 
 #controlButtons {
