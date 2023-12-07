@@ -1,6 +1,6 @@
 <%-- 
-    Document   : settingsUser
-    Created on : Dec 6, 2023, 11:38:39 PM
+    Document   : settingsAdmin
+    Created on : Dec 7, 2023, 4:42:48 PM
     Author     : Ian Cariaga
 --%>
 
@@ -21,7 +21,7 @@
                 <img src="images/logo.png" alt="Flashwiz Logo">
                 <p id='websiteName'>FlashWiz</p>
             </div>
-            <p id='userType'>User</p>
+            <p id='userType'>Admin</p>
         </div>
 
 
@@ -43,9 +43,14 @@
 
                 <input type="submit" value="Save">
             </form>
+            <div id="warning">
+                <img src="images/warning.png" alt="Warning Icon">
+                <h3>Warning! Saving this will update the Deployment Descriptor of the website.</h3>
+            </div>
         </div>
         <div id="footer">
-
+            <button class="logout">Logout</button>
         </div>
     </body>
 </html>
+
