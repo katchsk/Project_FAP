@@ -45,7 +45,7 @@
             </form>
             <div id="warning">
                 <img src="images/warning.png" alt="Warning Icon">
-                <h3>Warning, saving will update the Deployment Descriptor of the Website</h3>
+                <h3>Warning! Saving this will update the Deployment Descriptor of the website.</h3>
             </div>
         </div>
         <div id="footer">

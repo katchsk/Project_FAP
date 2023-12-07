@@ -261,7 +261,7 @@ label {
 
 #quizDuration,
 #questionRandomness {
-    width: 50%;
+    width: 40%;
     margin-bottom: 15px;
     display: flex;
     flex-direction: column;
@@ -275,7 +275,7 @@ input[type="submit"] {
     width: 6%;
     padding: 12px;
     border-radius: 10px;
-    margin-top: 5px;
+    margin-top: 3px;
     box-sizing: border-box;
     cursor: pointer;
     background-color: #BDC6EB;
@@ -284,16 +284,22 @@ input[type="submit"] {
     border: none;
 }
 
+input[type="submit"]:hover {
+    transform: scale(1.05);
+    background-color: #1b81c2;
+}
+
 #warning {
     display: flex;
     align-items: center;
-    margin-top: 15px; 
+    margin-top: 20px; 
     font-size: 12px;
+    margin-left: 10px;
 }
 
 #warning img {
     width: 25px;
-    height: 25px;
+    height: 23px;
     margin-right: 10px;
 }
 
@@ -312,6 +318,11 @@ input[type="submit"] {
     font-family: 'Lato', sans-serif; 
     font-weight: bold;
     width: 8%;
+}
+
+.logout:hover {
+    background-color: white;
+    transform: scale(1.1);
 }
 
 
