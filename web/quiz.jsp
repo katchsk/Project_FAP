@@ -25,27 +25,31 @@
                 <div class="quizCard">
                     <div class="question-side">
                         <div id="questionBlock">
-                            <h2>Question Placeholder</h2>
-                            <p>This is a sample question. Click to reveal the answer.</p>
+                            <h2 id="questionText">Question here</h2>
                         </div>
                     </div>
                     <div class="answer-side">
                         <div id="answerBlock">
-                            <h2>Answer Placeholder</h2>
+                            <h2 id="answerText">Answer here</h2>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <script src="script.js"></script>
-
             <div id="controlButtons">
-                <button class="buttonPrevious">Previous</button>
-                <button class="buttonNext">Next</button>
+                <form id="quizForm" action="quiz" method="post">
+                    <input type="hidden" name="action" id="actionInput" value="">
+                    <button type="button" class="buttonPrevious" onclick="changeQuestion('previous');">Previous</button>
+                    <button type="button" class="buttonNext" onclick="changeQuestion('next');">Next</button>
+                </form>
             </div>
+            
+            <script src="script.js"></script>
         </div>
+
         <div id="footer">
             <button class="home">Home</button>
         </div>
+        
     </body>
 </html>

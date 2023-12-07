@@ -49,7 +49,9 @@
             </div>
         </div>
         <div id="footer">
-            <button class="logout">Logout</button>
+            <form action="index.jsp" method="post">
+                <button type="submit" class="logout">Logout</button>
+            </form>
         </div>
     </body>
 </html>
