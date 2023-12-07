@@ -13,12 +13,12 @@
         <servlet-name>loginServlet</servlet-name>
         <servlet-class>loginServlet</servlet-class>
         <init-param>
-            <param-name>username</param-name>
-            <param-value>username</param-value> <!-- Set username here -->
+            <param-name>adminUsername</param-name>
+            <param-value>admin123</param-value> <!-- Set username here -->
         </init-param>
         <init-param>
-            <param-name>password</param-name>
-            <param-value>password</param-value> <!-- Set password here -->
+            <param-name>adminPassword</param-name>
+            <param-value>adminpassword</param-value> <!-- Set password here -->
         </init-param>
     </servlet>
     <servlet-mapping>
