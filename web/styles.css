@@ -127,7 +127,7 @@ body {
     position: relative;
 }
 
-.card {
+.quizCard {
     width: 500px;
     height: 350px;
     transform-style: preserve-3d;

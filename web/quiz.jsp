@@ -22,7 +22,7 @@
         </div>
         <div id="quizContainer">
             <div id="quizBox" onclick="flipCard()">
-                <div class="card">
+                <div class="quizCard">
                     <div class="question-side">
                         <div id="questionBlock">
                             <h2>Question Placeholder</h2>
