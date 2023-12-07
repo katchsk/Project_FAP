@@ -4,6 +4,27 @@
     Author     : Ian Cariaga
 --%>
 
+<%@ page session="false" %>
+
+<%
+    HttpSession initialSession = request.getSession(false);
+    
+    if (initialSession == null){
+        response.sendRedirect("index.jsp");
+    } else {
+        boolean isUser = false;
+
+        if (initialSession.getAttribute("User") != null) {
+            isUser = (Boolean) initialSession.getAttribute("Admin");
+        }
+        
+        if (isUser){
+            response.sendRedirect("dashboard.jsp");
+        }
+    }
+
+%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

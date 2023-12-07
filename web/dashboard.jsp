@@ -3,6 +3,26 @@
     Created on : 12 4, 23, 10:14:39 PM
     Author     : Dodge Lapis
 --%>
+<%@ page session="false" %>
+
+<%
+    HttpSession initialSession = request.getSession(false);
+    
+    if (initialSession == null){
+        response.sendRedirect("index.jsp");
+    } else {
+        boolean isAdmin = false;
+
+        if (initialSession.getAttribute("Admin") != null) {
+            isAdmin = (Boolean) initialSession.getAttribute("Admin");
+        }
+        
+        if (isAdmin){
+            response.sendRedirect("settingsAdmin.jsp");
+        }
+    }
+
+%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -454,11 +474,10 @@
         <%@ page import="java.util.ArrayList" %>
 
         <% 
-           ArrayList<ArrayList<String>> arrayFromServer = (ArrayList<ArrayList<String>>) session.getAttribute("CardList");
-           
-           if (arrayFromServer != null) {
-//             System.out.println(arrayFromServer);
-           }
+            ArrayList<ArrayList<String>> arrayFromServer = null;
+            if (initialSession != null){
+                arrayFromServer = (ArrayList<ArrayList<String>>) initialSession.getAttribute("CardList");
+            }
         %>
             
 //        <% 

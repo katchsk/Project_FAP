@@ -3,6 +3,32 @@
     Created on : 12 4, 23, 10:14:39 PM
     Author     : Dodge Lapis
 --%>
+<%@ page session="false" %>
+
+<%
+ 
+    HttpSession initialSession = request.getSession(false);
+    
+    if (initialSession != null){
+        boolean isAdmin = false;
+        boolean isUser = false;
+
+        if (initialSession.getAttribute("Admin") != null) {
+            isAdmin = (Boolean) initialSession.getAttribute("Admin");
+        }
+
+        if (initialSession.getAttribute("User") != null) {
+            isUser = (Boolean) initialSession.getAttribute("User");
+        }
+        
+        if (isAdmin){
+            response.sendRedirect("settingsAdmin.jsp");
+        } else if (isUser) {
+            response.sendRedirect("dashboard.jsp");
+        }
+    }
+
+%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
