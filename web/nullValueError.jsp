@@ -13,7 +13,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Lato&family=Poppins:wght@500&display=swap" rel="stylesheet">
-        <title>Authentication Error</title>
+        <title>Null Value Error</title>
     </head>
     <body>
         <div class="header">
@@ -23,8 +23,8 @@
             </div>
         </div>
              <div class="errorContainer">
-                 <h2>Authentication Error!</h2>
-                 <p>Username/Password is incorrect.</p>
+                 <h2>Null Value Error!</h2>
+                 <p>Username/Password cannot be blank.</p>
                  <button class="return" onclick="location.href='index.jsp'">Go back</button>
             </div>
         <div class="footer">

@@ -40,6 +40,10 @@ public class loginServlet extends HttpServlet {
         String enteredPassword = request.getParameter("password");
 
         try {
+            if (enteredUsername == null || enteredUsername.trim().isEmpty() || enteredPassword == null || enteredPassword.trim().isEmpty()) {
+                throw new NullValueException("Username or password cannot be blank");
+            }
+
             if (adminUsername.equals(enteredUsername) && adminPassword.equals(enteredPassword)) {
                 HttpSession session = request.getSession();
                 session.setAttribute("loggedIn", true);
@@ -47,16 +51,16 @@ public class loginServlet extends HttpServlet {
                 session.setAttribute("UserType", "Admin");
                 response.sendRedirect("settingsAdmin.jsp");
             } else {
-                // Check if the entered username and password match any pair in the HashSet
                 authenticateUser(enteredUsername, enteredPassword);
 
-                // Successful login
                 HttpSession session = request.getSession();
                 session.setAttribute("loggedIn", true);
                 session.setAttribute("User", true);
                 session.setAttribute("UserType", "User");
                 response.sendRedirect("dashboard.jsp");
             }
+        } catch (NullValueException e) {
+            response.sendRedirect("nullValueError.jsp");
         } catch (AuthenticationException e) {
             response.sendRedirect("authenticationError.jsp");
         }
@@ -70,20 +74,19 @@ public class loginServlet extends HttpServlet {
         }
         throw new AuthenticationException("AuthenticationFailed");
     }
-    
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                
+
         // Retrieve the entered username and password
         String isGuest = request.getParameter("isGuest");
-        if (isGuest != null){
+        if (isGuest != null) {
             HttpSession session = request.getSession();
             session.setAttribute("UserType", "Guest");
             session.setAttribute("Guest", true);
             response.sendRedirect("dashboard.jsp");
         }
     }
-
 
     public class User {
 
@@ -107,6 +110,13 @@ public class loginServlet extends HttpServlet {
     public class AuthenticationException extends Exception {
 
         public AuthenticationException(String message) {
+            super(message);
+        }
+    }
+    
+    public class NullValueException extends Exception {
+        
+        public NullValueException (String message) {
             super(message);
         }
     }

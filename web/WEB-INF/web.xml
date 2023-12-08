@@ -83,4 +83,8 @@
         <servlet-name>SaveAdminSettingsServlet</servlet-name>
         <url-pattern>/SaveAdminSettings</url-pattern>
     </servlet-mapping>
+    <error-page>
+        <error-code>404</error-code> 
+        <location>/error404.jsp</location>
+    </error-page>
 </web-app>
