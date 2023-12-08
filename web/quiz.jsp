@@ -125,6 +125,7 @@
             updateVisibleCard();
             
             function updateVisibleCard(){
+                resetCardFlip();
                 currentCard = cardList[cardIndex];
                 const questionElem = document.getElementById("questionText");
                 const answerElem = document.getElementById("answerText");
