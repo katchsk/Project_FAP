@@ -37,10 +37,10 @@
         <title>User Settings</title>
     </head>
     <body>
-         <div class="header">
+        <div class="header">
             <div class="left-header">
-                <img src="images/logo.png" alt="Flashwiz Logo">
-                <p id='websiteName'><%= getServletContext().getInitParameter("WebsiteTitle") %></p>
+                <img src="images/logorevised.png" alt="Flashwiz Logo">
+                <p id='websiteName'><%= getServletContext().getInitParameter("WebsiteTitle")%></p>
             </div>
             <p id='userType'>Admin</p>
         </div>
@@ -71,8 +71,8 @@
                 <h3>Warning! Saving this will update the Deployment Descriptor of the website.</h3>
             </div>
         </div>
-         <div class="footer">
-             <p><%= getServletContext().getInitParameter("Copyright") %></p>
+        <div class="footer">
+            <p><%= getServletContext().getInitParameter("Copyright")%></p>
             <form action="Logout" method="post">
                 <button type="submit" class="logout">Logout</button>
             </form>

@@ -18,16 +18,16 @@
     <body>
         <div class="header">
             <div class="left-header">
-                <img src="images/logo.png" alt="Flashwiz Logo">
+                <img src="images/logorevised.png" alt="Flashwiz Logo">
                 <p id='websiteName'>FlashWiz</p>
             </div>
         </div>
-             <div class="errorContainer">
-                 <h2>Authentication Error!</h2>
-                 <p>Username/Password is incorrect.</p>
-                 <button class="return" onclick="location.href='index.jsp'">Go back</button>
-            </div>
-        <div class="footer">
-        </form>
-    </div>
-</body>
+        <div class="errorContainer">
+            <h2>Authentication Error!</h2>
+            <p>Username/Password is incorrect.</p>
+            <button class="return" onclick="location.href = 'index.jsp'">Go back</button>
+        </div>
+        <div class="footerIndex">
+            <p><%= getServletContext().getInitParameter("Copyright") %></p>
+        </div>
+    </body>

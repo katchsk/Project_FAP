@@ -4,6 +4,7 @@
     background: linear-gradient(to right, #003f67, #1b81c2);
     height: 5vw;
     display: flex;
+    color: white;
 }
 
 .header {
@@ -13,6 +14,13 @@
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
+}
+
+#websiteName {
+    font-size: 2vw;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    margin-left: 10px;
 }
 
 .left-header {
@@ -26,7 +34,8 @@
     border-radius: 50%;
 }
 
-.footer  {
+.footer,
+.footerIndex {
     background: linear-gradient(to right, #003f67, #1b81c2);
     height: 5vw;
     display: flex;
@@ -38,10 +47,21 @@
     width: 100%;
 }
 
+.footer p {
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    margin-right: 72%;
+}
+
+.footerIndex p{
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    margin-right: 5%;
+}
+
 /* index.jsp */
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -49,10 +69,10 @@ body {
 
 #loginContainer {
     display: grid;
-    grid-template-columns: 1fr 2fr; /* 1fr for logoWeb, 2fr for login */
+    grid-template-columns: 1fr 2fr;
     align-items: center;
-    padding: 2%; /* Use percentage-based padding for flexibility */
-    margin-top: 0vw;
+    padding: 2%;
+    margin-top: -100px; /* Add or adjust this line to control the top margin */
     flex: 1;
 }
 
@@ -67,11 +87,11 @@ body {
     border-radius: 50%;
 }
 
-#websiteName {
-    font-size: 2vw;
+#websiteNameIndex {
+    font-size: 3vw;
     font-family: 'Poppins', sans-serif;
-    color: white;
-    margin-right: 1000px;
+    color: black;
+    margin-left: 10px;
 }
 
 #login {
@@ -176,6 +196,25 @@ body {
     transform-style: preserve-3d; /* Added transform-style for maintaining 3D effect */
 }
 
+#countdown-container {
+    display: inline-block;
+    background-color: #333333; /* Set the background color */
+    padding: 10px;
+    border-radius: 8px; /* Add rounded corners if desired */
+    white-space: nowrap; /* Prevent line breaks within the container */
+    position: fixed;
+    left: 20px; /* Adjust the left value as needed */
+    top: 80px; /* Adjust the top value as needed */
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); /* Increase size and opacity for a more visible 3D effect */
+}
+
+#countdown {
+    font-size: 24px; /* Set the desired font size */
+    font-family: 'Lato', sans-serif; /* Set the desired font family */
+    color: #ffffff; /* Set the text color */
+    margin: 0; /* Remove default margin */
+}
+
 #questionBlock {
     background-color: #F0F0F0;
     padding: 20px;
@@ -189,6 +228,7 @@ body {
 
 #question-answer {
     margin-top: 150px;
+    font-family: 'Lato', sans-serif;
 }
 
 #answerBlock {
@@ -235,26 +275,11 @@ body {
     transform: scale(1.05);
 }
 
-.home {
-    padding: 12px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: #BDC6EB;
-    color: #black;
-    border: none;
-    border-radius: 13px;
-    margin-right: auto;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: 20px;
-    width: 100px;
-}
-
 /* settingUser.jsp, settingsAdmin.jsp */
 #settings {
     display: flex;
     flex-direction: column;
-    margin-top: 15vh;
+    margin-top: 10vh;
     margin-left: 50px;
     margin-right: 25px;
     font-family: 'Lato', sans-serif;
@@ -296,6 +321,7 @@ input[type="submit"] {
     font-family: 'Lato', sans-serif;
     font-weight: bold;
     border: none;
+    transition: background-color 0.3s ease;
 }
 
 input[type="submit"]:hover {
@@ -317,7 +343,8 @@ input[type="submit"]:hover {
     margin-right: 10px;
 }
 
-.logout{
+.logout,
+.home {
     padding: 12px;
     border-radius: 13px;
     box-sizing: border-box;
@@ -329,17 +356,20 @@ input[type="submit"]:hover {
     font-weight: bold;
     width: 115px;
     margin-right: 50px;
+    transition: background-color 0.3s ease;
 }
 
-.logout:hover {
+.logout:hover,
+.home:hover {
     background-color: white;
     transform: scale(1.1);
 }
 
 /* errors.jsp */
 .errorContainer {
-    border: 2px solid gray;
+    position: relative;
     box-sizing: border-box;
+    border: 2px solid gray;
     border-radius: 15px;
     padding: 10px;
     margin: 20px auto;
@@ -347,23 +377,31 @@ input[type="submit"]:hover {
     height: 200px;
     width: 300px;
     text-align: center;
-    background-color: #gray;
-    color: #black;
+    background-color: #eee; /* Use a light background color */
+    color: #000;
     font-family: 'Lato', sans-serif;
-
+    overflow: hidden; /* Hide overflow to prevent box-shadow artifacts */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s;
+    
     .return {
         padding: 12px;
         border-radius: 13px;
         box-sizing: border-box;
         cursor: pointer;
-        background-color: #BDC6EB;
-        color: black;
+        background-color: #003f67;
+        color: white;
         border: none;
         font-family: 'Lato', sans-serif;
         font-weight: bold;
         width: 115px;
         margin-right: 10px;
         margin-top: 20px;
+    }
+    
+    .return:hover {
+        background-color: #1b81c2;
+        transform: scale(1.1);
     }
 }
 

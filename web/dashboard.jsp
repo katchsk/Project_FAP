@@ -7,7 +7,7 @@
 
 <%
     HttpSession initialSession = request.getSession(false);
-    
+
     String UserType = "";
 
     if (initialSession == null) {
@@ -22,7 +22,7 @@
         if (isAdmin) {
             response.sendRedirect("settingsAdmin.jsp");
         }
-        
+
         UserType = (String) initialSession.getAttribute("UserType");
     }
 
@@ -103,7 +103,8 @@
             }
 
             .header-button:hover {
-                background-color: #45a049; /* Change to a slightly darker shade on hover */
+                background-color: #003f67; /* Change to a slightly darker shade on hover */
+                transform: scale(1.05);
             }
 
             .card {
@@ -312,10 +313,10 @@
     <body>
         <div class="header">
             <div class="left-header">
-                <img src="images/logo.png" alt="Flashwiz Logo">
-                <p id='websiteName'><%= getServletContext().getInitParameter("WebsiteTitle") %></p>
+                <img src="images/logorevised.png" alt="Flashwiz Logo">
+                <p id='websiteName'><%= getServletContext().getInitParameter("WebsiteTitle")%></p>
             </div>
-                <p id='userType'><%= initialSession.getAttribute("UserType")%></p>
+            <p id='userType'><%= initialSession.getAttribute("UserType")%></p>
         </div>
         <div id="dashboardContainer">
             <div class ="button-header-container">
@@ -333,7 +334,7 @@
         </div>
 
         <div class="footer">
-            <p><%= getServletContext().getInitParameter("Copyright") %></p>
+            <p><%= getServletContext().getInitParameter("Copyright")%></p>
             <form action="Logout" method="post">
                 <button type="submit" class="logout">Logout</button>
             </form>
@@ -362,198 +363,198 @@
         </div>
         <script  src="scripts/script.js"></script>
         <script>
-            
-            
-            let UserType = "<%= UserType%>";
-            
-            function goToPlay(){
-                if (UserType == "Guest"){
-                    alert("You must sign in to use this feature!");
-                    return;
-                }
-                
-                window.location.href="quiz.jsp";
-            }
 
-            function goToSettings(){
-               if (UserType == "Guest"){
-                   alert("You must sign in to use this feature!");
-                   return;
-               }
-               window.location.href="settingsUser.jsp";
-            }
-            
-            // Function to display the modal
-            function openModal() {
-                var modal = document.getElementById("myModal");
-                modal.style.display = "block";
-            }
 
-            // Function to close the modal
-            function closeModal() {
-                var modal = document.getElementById("myModal");
-                modal.style.display = "none";
-            }
+                            let UserType = "<%= UserType%>";
 
-            // Function to be called when the "Create" button is clicked
-            function openCreateModal() {
-                openModal();
-            }
+                            function goToPlay() {
+                                if (UserType == "Guest") {
+                                    alert("You must sign in to use this feature!");
+                                    return;
+                                }
 
-            // Attach a click event listener to the "Create" button
-            document.getElementById("createButton").addEventListener("click", openCreateModal);
+                                window.location.href = "quiz.jsp";
+                            }
 
-            // Attach a click event listener to the modal's close button (x)
-            document.getElementsByClassName("close")[0].addEventListener("click", closeModal);
+                            function goToSettings() {
+                                if (UserType == "Guest") {
+                                    alert("You must sign in to use this feature!");
+                                    return;
+                                }
+                                window.location.href = "settingsUser.jsp";
+                            }
 
-            function createInput(name, value) {
-                var input = document.createElement('input');
-                input.type = 'hidden';
-                input.name = name;
-                input.value = value;
+                            // Function to display the modal
+                            function openModal() {
+                                var modal = document.getElementById("myModal");
+                                modal.style.display = "block";
+                            }
 
-                return input;
-            }
+                            // Function to close the modal
+                            function closeModal() {
+                                var modal = document.getElementById("myModal");
+                                modal.style.display = "none";
+                            }
 
-            // Function to be called when the "Save" button in the modal is clicked
-            function saveFlashcard(question, answer) {
-                const validateQuestion = (typeof question === "string" && question.length === 0);
-                const validateAnswer = (typeof answer === "string" && answer.length === 0);
+                            // Function to be called when the "Create" button is clicked
+                            function openCreateModal() {
+                                openModal();
+                            }
 
-                if (validateQuestion || validateAnswer) {
-                    return;
-                }
+                            // Attach a click event listener to the "Create" button
+                            document.getElementById("createButton").addEventListener("click", openCreateModal);
 
-                var form = document.createElement('form');
-                form.method = 'POST';
-                form.action = 'CreateFlashcard';  // Specify the target URL
+                            // Attach a click event listener to the modal's close button (x)
+                            document.getElementsByClassName("close")[0].addEventListener("click", closeModal);
 
-                // Create input elements for each parameter you want to send
-                var input1 = createInput("question", question);
-                var input2 = createInput("answer", answer);
-                var input3 = createInput("addmore", "false");
-                form.appendChild(input1);
-                form.appendChild(input2);
-                form.appendChild(input3);
-                // Optionally, append the form to the document (hidden forms can be submitted)
-                document.body.appendChild(form);
+                            function createInput(name, value) {
+                                var input = document.createElement('input');
+                                input.type = 'hidden';
+                                input.name = name;
+                                input.value = value;
 
-                // Submit the form
-                form.submit();
-            }
+                                return input;
+                            }
 
-            // Function to be called when the "One More?" button in the modal is clicked
-            function addAnother(question, answer) {
-                const validateQuestion = (typeof question === "string" && question.length === 0);
-                const validateAnswer = (typeof answer === "string" && answer.length === 0);
+                            // Function to be called when the "Save" button in the modal is clicked
+                            function saveFlashcard(question, answer) {
+                                const validateQuestion = (typeof question === "string" && question.length === 0);
+                                const validateAnswer = (typeof answer === "string" && answer.length === 0);
 
-                if (validateQuestion || validateAnswer) {
-                    return;
-                }
+                                if (validateQuestion || validateAnswer) {
+                                    return;
+                                }
 
-                var form = document.createElement('form');
-                form.method = 'POST';
-                form.action = 'CreateFlashcard';  // Specify the target URL
+                                var form = document.createElement('form');
+                                form.method = 'POST';
+                                form.action = 'CreateFlashcard';  // Specify the target URL
 
-                // Create input elements for each parameter you want to send
-                var input1 = createInput("question", question);
-                var input2 = createInput("answer", answer);
-                var input3 = createInput("addmore", "true");
-                form.appendChild(input1);
-                form.appendChild(input2);
-                form.appendChild(input3);
-                document.body.appendChild(form);
+                                // Create input elements for each parameter you want to send
+                                var input1 = createInput("question", question);
+                                var input2 = createInput("answer", answer);
+                                var input3 = createInput("addmore", "false");
+                                form.appendChild(input1);
+                                form.appendChild(input2);
+                                form.appendChild(input3);
+                                // Optionally, append the form to the document (hidden forms can be submitted)
+                                document.body.appendChild(form);
 
-                // Submit the form
-                form.submit();
-            }
+                                // Submit the form
+                                form.submit();
+                            }
 
-            function deleteCard(cardIndex) {
-                // Create a form element
-                var form = document.createElement('form');
-                form.method = 'POST';
-                form.action = 'DeleteFlashcard';  // Specify the target URL
+                            // Function to be called when the "One More?" button in the modal is clicked
+                            function addAnother(question, answer) {
+                                const validateQuestion = (typeof question === "string" && question.length === 0);
+                                const validateAnswer = (typeof answer === "string" && answer.length === 0);
 
-                // Create input elements for each parameter you want to send
-                var input1 = document.createElement('input');
-                input1.type = 'hidden';
-                input1.name = 'CardIndex';
-                input1.value = cardIndex;
-                form.appendChild(input1);
+                                if (validateQuestion || validateAnswer) {
+                                    return;
+                                }
 
-                // Optionally, append the form to the document (hidden forms can be submitted)
-                document.body.appendChild(form);
+                                var form = document.createElement('form');
+                                form.method = 'POST';
+                                form.action = 'CreateFlashcard';  // Specify the target URL
 
-                // Submit the form
-                form.submit();
-            }
+                                // Create input elements for each parameter you want to send
+                                var input1 = createInput("question", question);
+                                var input2 = createInput("answer", answer);
+                                var input3 = createInput("addmore", "true");
+                                form.appendChild(input1);
+                                form.appendChild(input2);
+                                form.appendChild(input3);
+                                document.body.appendChild(form);
 
-            function createCard(question, answer, index) {
-                // Create the main div element with the "card" class
-                const cardDiv = document.createElement("div");
-                cardDiv.className = "card";
+                                // Submit the form
+                                form.submit();
+                            }
 
-                // Create the delete icon container
-                const deleteIconContainer = document.createElement("div");
-                deleteIconContainer.className = "delete-icon-container";
+                            function deleteCard(cardIndex) {
+                                // Create a form element
+                                var form = document.createElement('form');
+                                form.method = 'POST';
+                                form.action = 'DeleteFlashcard';  // Specify the target URL
 
-                // Create the delete icon
-                const deleteIcon = document.createElement("i");
-                deleteIcon.className = "fas fa-trash delete-icon";
+                                // Create input elements for each parameter you want to send
+                                var input1 = document.createElement('input');
+                                input1.type = 'hidden';
+                                input1.name = 'CardIndex';
+                                input1.value = cardIndex;
+                                form.appendChild(input1);
 
-                // Append the delete icon to its container
-                deleteIconContainer.appendChild(deleteIcon);
-                deleteIconContainer.onclick = function () {
-                    console.log("hi");
-                    deleteCard(index);
-                }
+                                // Optionally, append the form to the document (hidden forms can be submitted)
+                                document.body.appendChild(form);
 
-                // Create the card title
-                const cardTitle = document.createElement("div");
-                cardTitle.className = "card-title";
-                cardTitle.textContent = "Flashcard #" + (index + 1);
+                                // Submit the form
+                                form.submit();
+                            }
 
-                // Create the question section
-                const cardQuestion = document.createElement("div");
-                cardQuestion.className = "card-question";
-                cardQuestion.textContent = "Question:";
+                            function createCard(question, answer, index) {
+                                // Create the main div element with the "card" class
+                                const cardDiv = document.createElement("div");
+                                cardDiv.className = "card";
 
-                const cardQuestionText = document.createElement("div");
-                cardQuestionText.className = "card-question-text truncate";
-                cardQuestionText.textContent = question;
+                                // Create the delete icon container
+                                const deleteIconContainer = document.createElement("div");
+                                deleteIconContainer.className = "delete-icon-container";
 
-                // Create the card spacing
-                const cardSpacing = document.createElement("div");
-                cardSpacing.className = "card-spacing";
+                                // Create the delete icon
+                                const deleteIcon = document.createElement("i");
+                                deleteIcon.className = "fas fa-trash delete-icon";
 
-                // Create the answer section
-                const cardAnswer = document.createElement("div");
-                cardAnswer.className = "card-answer";
-                cardAnswer.textContent = "Answer:";
+                                // Append the delete icon to its container
+                                deleteIconContainer.appendChild(deleteIcon);
+                                deleteIconContainer.onclick = function () {
+                                    console.log("hi");
+                                    deleteCard(index);
+                                }
 
-                const cardAnswerText = document.createElement("div");
-                cardAnswerText.className = "card-answer-text";
-                cardAnswerText.textContent = answer;
+                                // Create the card title
+                                const cardTitle = document.createElement("div");
+                                cardTitle.className = "card-title";
+                                cardTitle.textContent = "Flashcard #" + (index + 1);
 
-                // Append all elements to the main card div
-                cardDiv.appendChild(deleteIconContainer);
-                cardDiv.appendChild(cardTitle);
-                cardDiv.appendChild(cardQuestion);
-                cardDiv.appendChild(cardQuestionText);
-                cardDiv.appendChild(cardSpacing);
-                cardDiv.appendChild(cardAnswer);
-                cardDiv.appendChild(cardAnswerText);
+                                // Create the question section
+                                const cardQuestion = document.createElement("div");
+                                cardQuestion.className = "card-question";
+                                cardQuestion.textContent = "Question:";
 
-                return cardDiv;
-            }
+                                const cardQuestionText = document.createElement("div");
+                                cardQuestionText.className = "card-question-text truncate";
+                                cardQuestionText.textContent = question;
+
+                                // Create the card spacing
+                                const cardSpacing = document.createElement("div");
+                                cardSpacing.className = "card-spacing";
+
+                                // Create the answer section
+                                const cardAnswer = document.createElement("div");
+                                cardAnswer.className = "card-answer";
+                                cardAnswer.textContent = "Answer:";
+
+                                const cardAnswerText = document.createElement("div");
+                                cardAnswerText.className = "card-answer-text";
+                                cardAnswerText.textContent = answer;
+
+                                // Append all elements to the main card div
+                                cardDiv.appendChild(deleteIconContainer);
+                                cardDiv.appendChild(cardTitle);
+                                cardDiv.appendChild(cardQuestion);
+                                cardDiv.appendChild(cardQuestionText);
+                                cardDiv.appendChild(cardSpacing);
+                                cardDiv.appendChild(cardAnswer);
+                                cardDiv.appendChild(cardAnswerText);
+
+                                return cardDiv;
+                            }
 
 
             <%@ page import="java.util.ArrayList" %>
 
-                let shouldModalEnable = <%= request.getParameter("addmore")%>
-                if (shouldModalEnable == true) {
-                    openModal();
-                }
+                            let shouldModalEnable = <%= request.getParameter("addmore")%>
+                            if (shouldModalEnable == true) {
+                                openModal();
+                            }
 
             <%
                 ArrayList<ArrayList<String>> arrayFromServer = null;
@@ -562,7 +563,7 @@
                 }
             %>
 
-    //        <%
+                            //        <%
         StringBuilder jsArray = new StringBuilder("[");
         if (arrayFromServer != null) {
             for (int i = 0; i < arrayFromServer.size(); i++) {
@@ -583,31 +584,31 @@
         }
             %>
 
-            let arrayString = '<%= jsArray.toString()%>';
-            let cardList = null;
+                            let arrayString = '<%= jsArray.toString()%>';
+                            let cardList = null;
 
-            if (arrayString != '[') {
-                let jsonArray = arrayString.replace(/'/g, '"');
-                cardList = JSON.parse(jsonArray);
+                            if (arrayString != '[') {
+                                let jsonArray = arrayString.replace(/'/g, '"');
+                                cardList = JSON.parse(jsonArray);
 
-                console.log(cardList);
-            }
+                                console.log(cardList);
+                            }
 
-            function updateBoard() {
-                const innerCardsElement = document.querySelector(".inner-cards");
-                if (cardList && innerCardsElement) {
-                    for (let i = 0; i < cardList.length; i++) {
-                        const question = cardList[i][0];
-                        const answer = cardList[i][1];
+                            function updateBoard() {
+                                const innerCardsElement = document.querySelector(".inner-cards");
+                                if (cardList && innerCardsElement) {
+                                    for (let i = 0; i < cardList.length; i++) {
+                                        const question = cardList[i][0];
+                                        const answer = cardList[i][1];
 
-                        const cardElem = createCard(question, answer, i);
-                        innerCardsElement.appendChild(cardElem);
-                    }
-                }
-            }
+                                        const cardElem = createCard(question, answer, i);
+                                        innerCardsElement.appendChild(cardElem);
+                                    }
+                                }
+                            }
 
 
-            updateBoard();
+                            updateBoard();
         </script>        
 
     </body>

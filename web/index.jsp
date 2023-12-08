@@ -54,8 +54,8 @@
         </div>
         <div id="loginContainer">
             <div id="logoWeb">
-                <img src="images/logo.png" alt="Flashwiz Logo">
-                <p id="websiteName"><%= getServletContext().getInitParameter("WebsiteTitle") %></p>
+                <img src="images/logorevised.png" alt="Flashwiz Logo">
+                <p id="websiteNameIndex"><%= getServletContext().getInitParameter("WebsiteTitle") %></p>
             </div>
             <div id="login">
                 <div id="loginLabel">
@@ -74,7 +74,7 @@
                 </form>
             </div>
         </div>
-        <div class="footer">
+        <div class="footerIndex">
             <p><%= getServletContext().getInitParameter("Copyright") %></p>
         </div>
     </body>

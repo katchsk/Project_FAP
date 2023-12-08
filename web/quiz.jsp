@@ -56,13 +56,14 @@
     <body>
          <div class="header">
             <div class="left-header">
-                <img src="images/logo.png" alt="Flashwiz Logo">
+                <img src="images/logorevised.png" alt="Flashwiz Logo">
                 <p id='websiteName'><%= getServletContext().getInitParameter("WebsiteTitle") %></p>
             </div>
             <p id='userType'><%= initialSession.getAttribute("UserType")%></p>
         </div>
 
         <div id="countdown-container">
+            <p id="countdown">5:00</p>
         </div>
 
         <div id="quizContainer">
@@ -83,7 +84,6 @@
             <form id="quizForm" action="quiz.jsp" method="post">
                 <div id="controlButtons">
                     <button type="button" class="buttonPrevious" onclick="prevFlashcard();">Previous</button>
-                    <p id="countdown">5:00</p>
                     <button type="button" class="buttonNext" onclick="nextFlashcard();">Next</button>
                 </div>
             </form>

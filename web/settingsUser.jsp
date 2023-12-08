@@ -44,7 +44,7 @@
     <body>
         <div class="header">
             <div class="left-header">
-                <img src="images/logo.png" alt="Flashwiz Logo">
+                <img src="images/logorevised.png" alt="Flashwiz Logo">
                 <p id='websiteName'><%= getServletContext().getInitParameter("WebsiteTitle") %></p>
             </div>
             <p id='userType'>User</p>
