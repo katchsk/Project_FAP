@@ -63,9 +63,9 @@
                 </div>
                 <form action="login" method="post">
                     <label for="username">Username</label>
-                    <input type="text" id="username" name="username" required><br>
+                    <input type="text" id="username" name="username"><br>
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required><br><br>
+                    <input type="password" id="password" name="password"><br><br>
                     <p id="guestButton">Login as <a href="login?isGuest=yes">Guest</a>?</p>
                     <button type="submit">
                         Login

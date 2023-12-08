@@ -44,6 +44,7 @@ public class loginServlet extends HttpServlet {
                 HttpSession session = request.getSession();
                 session.setAttribute("loggedIn", true);
                 session.setAttribute("Admin", true);
+                session.setAttribute("UserType", "Admin");
                 response.sendRedirect("settingsAdmin.jsp");
             } else {
                 // Check if the entered username and password match any pair in the HashSet
@@ -53,6 +54,7 @@ public class loginServlet extends HttpServlet {
                 HttpSession session = request.getSession();
                 session.setAttribute("loggedIn", true);
                 session.setAttribute("User", true);
+                session.setAttribute("UserType", "User");
                 response.sendRedirect("dashboard.jsp");
             }
         } catch (AuthenticationException e) {
