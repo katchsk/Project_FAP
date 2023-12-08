@@ -12,14 +12,14 @@
     if (initialSession == null) {
         response.sendRedirect("index.jsp");
     } else {
-        boolean isUser = false;
+        boolean isAdmin = false;
 
-        if (initialSession.getAttribute("User") != null) {
-            isUser = (Boolean) initialSession.getAttribute("Admin");
+        if (initialSession.getAttribute("Admin") != null) {
+            isAdmin = (Boolean) initialSession.getAttribute("Admin");
         }
 
-        if (isUser) {
-            response.sendRedirect("dashboard.jsp");
+        if (!isAdmin) {
+            response.sendRedirect("index.jsp");
         }
     }
 
@@ -40,7 +40,7 @@
          <div class="header">
             <div class="left-header">
                 <img src="images/logo.png" alt="Flashwiz Logo">
-                <p id='websiteName'>FlashWiz</p>
+                <p id='websiteName'><%= getServletContext().getInitParameter("WebsiteTitle") %></p>
             </div>
             <p id='userType'>Admin</p>
         </div>
@@ -48,10 +48,10 @@
 
         <div id="settings">
             <h1>Website Settings</h1>
-            <form action="save-settings" method="post">
+            <form action="SaveAdminSettings" method="post">
                 <label for="quizDuration">Quiz Duration (in minutes)</label>
-                <select id="quizDuration" name="quizDuration">
-                    <option value="Default">Default</option>
+                <select id="quizDuration" name="duration">
+                    <option value="0">Default</option>
                     <option value="5">5 minutes</option>
                     <option value="10">10 minutes</option>
                     <option value="15">15 minutes</option>  
@@ -59,9 +59,9 @@
 
                 <label for="questionRandomness">Question Randomness</label>
                 <select id="questionRandomness" name="questionRandomness">
-                    <option value="Default">Default</option>
-                    <option value="sorted">Sorted</option>
-                    <option value="randomized">Randomized</option>
+                    <option value="-1">Default</option>
+                    <option value="0">Sorted</option>
+                    <option value="1">Randomized</option>
                 </select><br>
 
                 <input type="submit" value="Save">
@@ -72,7 +72,7 @@
             </div>
         </div>
          <div class="footer">
-            <form action="index.jsp" method="post">
+            <form action="Logout" method="post">
                 <button type="submit" class="logout">Logout</button>
             </form>
         </div>

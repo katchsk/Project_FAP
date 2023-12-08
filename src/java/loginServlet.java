@@ -68,6 +68,20 @@ public class loginServlet extends HttpServlet {
         }
         throw new AuthenticationException("AuthenticationFailed");
     }
+    
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+                
+        // Retrieve the entered username and password
+        String isGuest = request.getParameter("isGuest");
+        if (isGuest != null){
+            HttpSession session = request.getSession();
+            session.setAttribute("UserType", "Guest");
+            session.setAttribute("Guest", true);
+            response.sendRedirect("dashboard.jsp");
+        }
+    }
+
 
     public class User {
 

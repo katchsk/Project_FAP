@@ -12,6 +12,7 @@
     if (initialSession != null){
         boolean isAdmin = false;
         boolean isUser = false;
+        boolean isGuest = false;
 
         if (initialSession.getAttribute("Admin") != null) {
             isAdmin = (Boolean) initialSession.getAttribute("Admin");
@@ -21,9 +22,15 @@
             isUser = (Boolean) initialSession.getAttribute("User");
         }
         
+        if (initialSession.getAttribute("Guest") != null) {
+            isGuest = (Boolean) initialSession.getAttribute("Guest");
+        }
+        
         if (isAdmin){
             response.sendRedirect("settingsAdmin.jsp");
         } else if (isUser) {
+            response.sendRedirect("dashboard.jsp");
+        } else if (isGuest) {
             response.sendRedirect("dashboard.jsp");
         }
     }
@@ -48,7 +55,7 @@
         <div id="loginContainer">
             <div id="logoWeb">
                 <img src="images/logo.png" alt="Flashwiz Logo">
-                <p id="websiteName">Flashwiz</p>
+                <p id="websiteName"><%= getServletContext().getInitParameter("WebsiteTitle") %></p>
             </div>
             <div id="login">
                 <div id="loginLabel">
@@ -59,7 +66,7 @@
                     <input type="text" id="username" name="username" required><br>
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" required><br><br>
-                    <p id="guestButton">Login as <a href="dashboard.jsp">Guest</a>?</p>
+                    <p id="guestButton">Login as <a href="login?isGuest=yes">Guest</a>?</p>
                     <button type="submit">
                         Login
                         <img src="images/loginbutton.png" alt="Login" class="button-icon">
