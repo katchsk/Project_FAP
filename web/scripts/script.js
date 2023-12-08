@@ -5,7 +5,14 @@
 
 function flipCard() {
     const card = document.querySelector('.quizCard');
+    card.style.transition = "transform 0.5s ease-in-out"
     card.classList.toggle('flipped');
+}
+
+function resetCardFlip() {
+    const card = document.querySelector('.quizCard');
+    card.style.transition = "transform 0s ease-in-out"
+    card.classList.remove('flipped');
 }
 
 // Display the current question and answer in the quiz box

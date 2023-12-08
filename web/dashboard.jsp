@@ -29,7 +29,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="styles.css">
+        <link rel="stylesheet" type="text/css" href="styles/styles.css">
         <link rel="stylesheet" type="text/css" href="Dashboard.css"
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -344,13 +344,13 @@
 
                 <!-- Move buttons inside a div for proper styling -->
                 <div class="modal-buttons">
-                    <button type="submit" onclick="saveFlashcard()">Save</button>
-                    <button type="submit" onclick="addAnother()">One More?</button>
+                    <button type="button" onclick="saveFlashcard(document.getElementById('question').value, document.getElementById('answer').value)">Save</button>
+                    <button type="button" onclick="addAnother(document.getElementById('question').value, document.getElementById('answer').value)">One More?</button>
                 </div>
             </form>
         </div>
     </div>
-    <script  src="script.js"></script>
+    <script  src="scripts/script.js"></script>
     <script>
         // Function to display the modal
         function openModal() {
@@ -375,20 +375,66 @@
         // Attach a click event listener to the modal's close button (x)
         document.getElementsByClassName("close")[0].addEventListener("click", closeModal);
         
+        function createInput(name, value){
+            var input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = name;
+            input.value = value;
+            
+            return input;
+        }
+        
         // Function to be called when the "Save" button in the modal is clicked
-        function saveFlashcard() {
-            // Add logic to save the flashcard details
-            // This is where you can handle form submission, save data, etc.
-            // For now, let's just close the modal
-            closeModal();
+        function saveFlashcard(question, answer) {
+            const validateQuestion = (typeof question === "string" && question.length === 0);
+            const validateAnswer = (typeof answer === "string" && answer.length === 0);
+   
+            if (validateQuestion || validateAnswer) {
+                return;
+            }
+            
+            var form = document.createElement('form');
+            form.method = 'POST';
+            form.action = 'CreateFlashcard';  // Specify the target URL
+
+            // Create input elements for each parameter you want to send
+            var input1 = createInput("question", question);
+            var input2 = createInput("answer", answer);
+            var input3 = createInput("addmore", "false");
+            form.appendChild(input1);
+            form.appendChild(input2);
+            form.appendChild(input3);
+            // Optionally, append the form to the document (hidden forms can be submitted)
+            document.body.appendChild(form);
+
+            // Submit the form
+            form.submit();
         }
 
         // Function to be called when the "One More?" button in the modal is clicked
-        function addAnother() {
-            // Add logic to handle adding another flashcard
-            // This is where you can reset the form or take any other action
-            // For now, let's just close the modal
-//            closeModal();
+        function addAnother(question, answer) {
+            const validateQuestion = (typeof question === "string" && question.length === 0);
+            const validateAnswer = (typeof answer === "string" && answer.length === 0);
+   
+            if (validateQuestion || validateAnswer) {
+                return;
+            }
+            
+            var form = document.createElement('form');
+            form.method = 'POST';
+            form.action = 'CreateFlashcard';  // Specify the target URL
+
+            // Create input elements for each parameter you want to send
+            var input1 = createInput("question", question);
+            var input2 = createInput("answer", answer);
+            var input3 = createInput("addmore", "true");
+            form.appendChild(input1);
+            form.appendChild(input2);
+            form.appendChild(input3);
+            document.body.appendChild(form);
+
+            // Submit the form
+            form.submit();
         }
         
         function deleteCard(cardIndex){
@@ -473,6 +519,11 @@
        
         <%@ page import="java.util.ArrayList" %>
 
+        let shouldModalEnable = <%= request.getParameter("addmore") %>
+        if (shouldModalEnable == true) {
+            openModal();
+        }
+
         <% 
             ArrayList<ArrayList<String>> arrayFromServer = null;
             if (initialSession != null){
@@ -505,7 +556,7 @@
         let cardList = null;
         
         if (arrayString != '[') {
-            let jsonArray = arrayString.replace(/'/g, '"'); // Replace single quotes with double quotes
+            let jsonArray = arrayString.replace(/'/g, '"');
             cardList = JSON.parse(jsonArray);
 
             console.log(cardList);  
