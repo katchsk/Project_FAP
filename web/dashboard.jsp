@@ -3,6 +3,26 @@
     Created on : 12 4, 23, 10:14:39 PM
     Author     : Dodge Lapis
 --%>
+<%@ page session="false" %>
+
+<%
+    HttpSession initialSession = request.getSession(false);
+    
+    if (initialSession == null){
+        response.sendRedirect("index.jsp");
+    } else {
+        boolean isAdmin = false;
+
+        if (initialSession.getAttribute("Admin") != null) {
+            isAdmin = (Boolean) initialSession.getAttribute("Admin");
+        }
+        
+        if (isAdmin){
+            response.sendRedirect("settingsAdmin.jsp");
+        }
+    }
+
+%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -419,97 +439,22 @@
                 input1.value = cardIndex;
                 form.appendChild(input1);
 
-                // Optionally, append the form to the document (hidden forms can be submitted)
-                document.body.appendChild(form);
-
-                // Submit the form
-                form.submit();
+        <% 
+            ArrayList<ArrayList<String>> arrayFromServer = null;
+            if (initialSession != null){
+                arrayFromServer = (ArrayList<ArrayList<String>>) initialSession.getAttribute("CardList");
             }
-
-            function createCard(question, answer, index) {
-                // Create the main div element with the "card" class
-                const cardDiv = document.createElement("div");
-                cardDiv.className = "card";
-
-                // Create the delete icon container
-                const deleteIconContainer = document.createElement("div");
-                deleteIconContainer.className = "delete-icon-container";
-
-                // Create the delete icon
-                const deleteIcon = document.createElement("i");
-                deleteIcon.className = "fas fa-trash delete-icon";
-
-                // Append the delete icon to its container
-                deleteIconContainer.appendChild(deleteIcon);
-                deleteIconContainer.onclick = function () {
-                    console.log("hi");
-                    deleteCard(index);
-                }
-
-                // Create the card title
-                const cardTitle = document.createElement("div");
-                cardTitle.className = "card-title";
-                cardTitle.textContent = "Flashcard #" + (index + 1);
-
-                // Create the question section
-                const cardQuestion = document.createElement("div");
-                cardQuestion.className = "card-question";
-                cardQuestion.textContent = "Question:";
-
-                const cardQuestionText = document.createElement("div");
-                cardQuestionText.className = "card-question-text truncate";
-                cardQuestionText.textContent = question;
-
-                // Create the card spacing
-                const cardSpacing = document.createElement("div");
-                cardSpacing.className = "card-spacing";
-
-                // Create the answer section
-                const cardAnswer = document.createElement("div");
-                cardAnswer.className = "card-answer";
-                cardAnswer.textContent = "Answer:";
-
-                const cardAnswerText = document.createElement("div");
-                cardAnswerText.className = "card-answer-text";
-                cardAnswerText.textContent = answer;
-
-                // Append all elements to the main card div
-                cardDiv.appendChild(deleteIconContainer);
-                cardDiv.appendChild(cardTitle);
-                cardDiv.appendChild(cardQuestion);
-                cardDiv.appendChild(cardQuestionText);
-                cardDiv.appendChild(cardSpacing);
-                cardDiv.appendChild(cardAnswer);
-                cardDiv.appendChild(cardAnswerText);
-
-                return cardDiv;
-            }
-
-
-            <%@ page import="java.util.ArrayList" %>
-
-            <%
-                ArrayList<ArrayList<String>> arrayFromServer = (ArrayList<ArrayList<String>>) session.getAttribute("CardList");
-
-                if (arrayFromServer != null) {
-                    //             System.out.println(arrayFromServer);
-                }
-            %>
-
-            //        <%
-                StringBuilder jsArray = new StringBuilder("[");
-                if (arrayFromServer != null) {
-                    for (int i = 0; i < arrayFromServer.size(); i++) {
-                        jsArray.append("[");
-                        ArrayList<String> innerList = arrayFromServer.get(i);
-                        for (int j = 0; j < innerList.size(); j++) {
-                            jsArray.append("\"").append(innerList.get(j)).append("\"");
-                            if (j < innerList.size() - 1) {
-                                jsArray.append(",");
-                            }
-                        }
-                        jsArray.append("]");
-                        if (i < arrayFromServer.size() - 1) {
+        %>
+            
+//        <% 
+            StringBuilder jsArray = new StringBuilder("[");
+            if (arrayFromServer != null) {
+                for (int i = 0; i < arrayFromServer.size(); i++) {
+                    jsArray.append("[");
+                    ArrayList<String> innerList = arrayFromServer.get(i);
+                    for (int j = 0; j < innerList.size(); j++) {
+                        jsArray.append("\"").append(innerList.get(j)).append("\"");
+                        if (j < innerList.size() - 1) {
                             jsArray.append(",");
                         }
                     }

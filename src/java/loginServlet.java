@@ -29,6 +29,7 @@ public class loginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+                
         // Retrieve the username and password from servlet initialization parameters
         String adminUsername = getServletConfig().getInitParameter("adminUsername");
         String adminPassword = getServletConfig().getInitParameter("adminPassword");
@@ -40,6 +41,7 @@ public class loginServlet extends HttpServlet {
         if (adminUsername.equals(enteredUsername) && adminPassword.equals(enteredPassword)) {
             HttpSession session = request.getSession();
             session.setAttribute("loggedIn", true);
+            session.setAttribute("Admin", true);
             response.sendRedirect("settingsAdmin.jsp");
         } // Check if the entered username and password match any pair in the HashSet
         else {
@@ -48,6 +50,7 @@ public class loginServlet extends HttpServlet {
                     // Successful login
                     HttpSession session = request.getSession();
                     session.setAttribute("loggedIn", true);
+                    session.setAttribute("User", true);
                     response.sendRedirect("dashboard.jsp");
                     return; // Exit the loop if a match is found
                 }
