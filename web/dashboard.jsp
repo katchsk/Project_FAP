@@ -563,52 +563,68 @@
                 }
             %>
 
-                            //        <%
-        StringBuilder jsArray = new StringBuilder("[");
-        if (arrayFromServer != null) {
-            for (int i = 0; i < arrayFromServer.size(); i++) {
-                jsArray.append("[");
-                ArrayList<String> innerList = arrayFromServer.get(i);
-                for (int j = 0; j < innerList.size(); j++) {
-                    jsArray.append("\"").append(innerList.get(j)).append("\"");
-                    if (j < innerList.size() - 1) {
+            <%
+            StringBuilder jsArray = new StringBuilder("[");
+            if (arrayFromServer != null) {
+                for (int i = 0; i < arrayFromServer.size(); i++) {
+                    jsArray.append("[");
+                    ArrayList<String> innerList = arrayFromServer.get(i);
+                    for (int j = 0; j < innerList.size(); j++) {
+                        String newString = "";
+                        for (int p = 0; p < innerList.get(j).length(); p++){
+                            char charVal = innerList.get(j).charAt(p);
+                            if (charVal == '\'') {
+                                continue;
+                            }
+                            
+                            if (charVal == '\"'){
+                                continue;
+                            }
+
+                            newString += charVal;
+                            System.out.println(charVal);
+                        }
+                        jsArray.append("\"").append(newString).append("\"");
+                        if (j < innerList.size() - 1) {
+                            jsArray.append(",");
+                        }
+                    }
+                    jsArray.append("]");
+                    if (i < arrayFromServer.size() - 1) {
                         jsArray.append(",");
                     }
                 }
                 jsArray.append("]");
-                if (i < arrayFromServer.size() - 1) {
-                    jsArray.append(",");
-                }
             }
-            jsArray.append("]");
-        }
+
+
             %>
 
-                            let arrayString = '<%= jsArray.toString()%>';
-                            let cardList = null;
+            let arrayString = '<%= jsArray.toString()%>';
+            let cardList = null;
 
-                            if (arrayString != '[') {
-                                let jsonArray = arrayString.replace(/'/g, '"');
-                                cardList = JSON.parse(jsonArray);
+            if (arrayString != '[') {
+                let jsonArray = arrayString.replace(/'/g, '"');
+                cardList = JSON.parse(jsonArray);
 
-                                console.log(cardList);
-                            }
+                console.log(cardList);
+            }
 
-                            function updateBoard() {
-                                const innerCardsElement = document.querySelector(".inner-cards");
-                                if (cardList && innerCardsElement) {
-                                    for (let i = 0; i < cardList.length; i++) {
-                                        const question = cardList[i][0];
-                                        const answer = cardList[i][1];
+            function updateBoard() {
+                const innerCardsElement = document.querySelector(".inner-cards");
+                if (cardList && innerCardsElement) {
+                    for (let i = 0; i < cardList.length; i++) {
+                        const question = cardList[i][0];
+                        const answer = cardList[i][1];
 
-                                        const cardElem = createCard(question, answer, i);
-                                        innerCardsElement.appendChild(cardElem);
-                                    }
-                                }
-                            }
+                        const cardElem = createCard(question, answer, i);
+                        innerCardsElement.appendChild(cardElem);
+                    }
+                }
+            }
 
 
-                            updateBoard();
+            updateBoard();
         </script>        
 
     </body>
