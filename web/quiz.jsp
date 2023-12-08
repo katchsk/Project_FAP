@@ -52,7 +52,6 @@
         </div>
 
         <div id="countdown-container">
-            <p id="countdown">5:00</p>
         </div>
 
         <div id="quizContainer">
@@ -70,14 +69,14 @@
                     </div>
                 </div>
             </div>
-
-            <div id="controlButtons">
-                <form id="quizForm" action="quiz.jsp" method="post">
-                    <input type="hidden" name="action" id="actionInput" value="">
+            <form id="quizForm" action="quiz.jsp" method="post">
+                <div id="controlButtons">
                     <button type="button" class="buttonPrevious" onclick="prevFlashcard();">Previous</button>
+                    <p id="countdown">5:00</p>
                     <button type="button" class="buttonNext" onclick="nextFlashcard();">Next</button>
-                </form>
-            </div>
+                </div>
+            </form>
+            
         </div>
 
          <div class="footer">
