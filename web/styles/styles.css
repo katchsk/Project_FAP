@@ -1,12 +1,12 @@
 /* header and footer */
-#header,
-#footer {
+.header,
+.footer {
     background: linear-gradient(to right, #003f67, #1b81c2);
     height: 5vw;
     display: flex;
 }
 
-#header {
+.header {
     background: linear-gradient(to right, #003f67, #1b81c2);
     height: 5vw;
     display: flex;
@@ -15,13 +15,18 @@
     padding: 0 20px;
 }
 
-#header img {
+.left-header {
+    display: flex;
+    align-items: center;
+}
+
+.header img {
     max-height: 5vw; /* Use viewport width for responsive image height */
     margin-left: 10px;
     border-radius: 50%;
 }
 
-#footer  {
+.footer  {
     background: linear-gradient(to right, #003f67, #1b81c2);
     height: 5vw;
     display: flex;
@@ -66,7 +71,7 @@ body {
     font-size: 2vw;
     font-family: 'Poppins', sans-serif;
     color: white;
-    margin-left: 10px;
+    margin-right: 1000px;
 }
 
 #login {
@@ -246,11 +251,22 @@ body {
     width: 100px;
 }
 
-.home:hover {
-    background-color: white;
-    transform: scale(1.1);
+#countdown-container {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    width: 10%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: inline-block; /* Make the container only as wide as its content */
+    position: absolute;
+    top: 80px; /* Adjust the top distance as needed */
+    left: 10px; /* Adjust the left distance as needed */
+    z-index: 999; /* Set a higher z-index to make sure it appears above other elements */
+    text-align: center;
+    font-size: 40px;
+    font-family: 'Lato', sans-serif;
 }
-
 
 /* settingUser.jsp, settingsAdmin.jsp */
 #settings {

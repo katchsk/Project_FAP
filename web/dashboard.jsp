@@ -306,9 +306,12 @@
         </style>
     </head>
     <body>
-        <div id="header">
-            <img src="images/logo.png" alt="Flashwiz Logo">
-            <p id="websiteName">Flashwiz</p>
+        <div class="header">
+            <div class="left-header">
+                <img src="images/logo.png" alt="Flashwiz Logo">
+                <p id='websiteName'>FlashWiz</p>
+            </div>
+            <p id='userType'>User</p>
         </div>
         <div id="dashboardContainer">
             <div class ="button-header-container">
@@ -325,7 +328,7 @@
             </div>
         </div>
 
-        <div id="footer">
+        <div class="footer">
             <form action="index.jsp" method="post">
                 <button type="submit" class="logout">Logout</button>
             </form>

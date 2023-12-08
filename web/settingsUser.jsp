@@ -16,8 +16,8 @@
         <title>User Settings</title>
     </head>
     <body>
-        <div id="header">
-            <div id="left-header">
+        <div class="header">
+            <div class="left-header">
                 <img src="images/logo.png" alt="Flashwiz Logo">
                 <p id='websiteName'>FlashWiz</p>
             </div>
@@ -44,8 +44,10 @@
                 <input type="submit" value="Save">
             </form>
         </div>
-        <div id="footer">
-
+        <div class="footer">
+            <form action="dashboard.jsp" method="post">
+                <button type="submit" class="home">Home</button>
+            </form>
         </div>
     </body>
 </html>

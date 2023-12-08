@@ -37,9 +37,12 @@
         <title>User Settings</title>
     </head>
     <body>
-        <div id="header">
-            <img src="images/logo.png" alt="Flashwiz Logo">
-            <p id='websiteName'>FlashWiz (Admin)</p>
+         <div class="header">
+            <div class="left-header">
+                <img src="images/logo.png" alt="Flashwiz Logo">
+                <p id='websiteName'>FlashWiz</p>
+            </div>
+            <p id='userType'>Admin</p>
         </div>
 
 
@@ -68,7 +71,7 @@
                 <h3>Warning! Saving this will update the Deployment Descriptor of the website.</h3>
             </div>
         </div>
-        <div id="footer">
+         <div class="footer">
             <form action="index.jsp" method="post">
                 <button type="submit" class="logout">Logout</button>
             </form>
