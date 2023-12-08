@@ -1,39 +1,30 @@
-/* 
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/JavaScript.js to edit this template
- */
+    /* 
+     * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+     * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/JavaScript.js to edit this template
+     */
 
 function flipCard() {
     const card = document.querySelector('.quizCard');
     card.classList.toggle('flipped');
 }
 
-var quizData = [
-    {question: "Question 1?", answer: "Answer 1"},
-    {question: "Question 2?", answer: "Answer 2"},
-            // Add more questions and answers as needed
-];
-
-var currentQuestionIndex = 0;
-
+// Display the current question and answer in the quiz box
 function updateQuizBox() {
-    document.getElementById('questionText').innerText = quizData[currentQuestionIndex].question;
-    document.getElementById('answerText').innerText = quizData[currentQuestionIndex].answer;
+    if (currentCardIndex >= 0 && currentCardIndex < cardList.length) {
+        document.getElementById('questionText').innerText = cardList[currentCardIndex].question;
+        document.getElementById('answerText').innerText = cardList[currentCardIndex].answer;
+    } else {
+        document.getElementById('questionText').innerText = "No more questions";
+        document.getElementById('answerText').innerText = "No more answers";
+    }
 }
 
 function changeQuestion(action) {
-    if (action === 'previous' && currentQuestionIndex > 0) {
-        currentQuestionIndex--;
-    } else if (action === 'next' && currentQuestionIndex < quizData.length - 1) {
-        currentQuestionIndex++;
-    }
+    console.log("Button clicked:", action);
 
-    updateQuizBox();
+    // Update the hidden input field value before submitting the form
+    document.getElementById('actionInput').value = action;
 
-    // Remove the form submission
-    return false;
+    // Append the current index as a URL parameter
+    window.location.href = "quiz.jsp?currentCardIndex=" + currentCardIndex;
 }
-
-window.onload = function () {
-    updateQuizBox();
-};
