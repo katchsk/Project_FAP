@@ -313,7 +313,7 @@
         <div id="dashboardContainer">
             <div class ="button-header-container">
                  <button id="createButton" class="header-button">Create</button>
-                 <button class="header-button">Play</button>
+                 <button class="header-button" onclick="goToPlay()">Play</button>
                  <button class="header-button">Settings</button>
             </div>
             
@@ -350,7 +350,7 @@
             </form>
         </div>
     </div>
-
+    <script  src="script.js"></script>
     <script>
         // Function to display the modal
         function openModal() {

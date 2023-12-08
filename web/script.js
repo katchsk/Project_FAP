@@ -28,3 +28,7 @@ function changeQuestion(action) {
     // Append the current index as a URL parameter
     window.location.href = "quiz.jsp?currentCardIndex=" + currentCardIndex;
 }
+
+function goToPlay(){
+    window.location.href="quiz.jsp";
+}
