@@ -42,7 +42,7 @@
         <title>Flashwiz</title>
     </head>
     <body>
-        <div id="header">
+        <div class="header">
             
         </div>
         <div id="loginContainer">
@@ -67,7 +67,7 @@
                 </form>
             </div>
         </div>
-        <div id="footer">
+        <div class="footer">
             
         </div>
     </body>

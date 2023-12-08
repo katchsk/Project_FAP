@@ -317,7 +317,7 @@ input[type="submit"]:hover {
     margin-right: 10px;
 }
 
-.logout {
+.logout{
     padding: 12px;
     border-radius: 13px;
     box-sizing: border-box;
@@ -336,6 +336,36 @@ input[type="submit"]:hover {
     transform: scale(1.1);
 }
 
+/* errors.jsp */
+.errorContainer {
+    border: 2px solid gray;
+    box-sizing: border-box;
+    border-radius: 15px;
+    padding: 10px;
+    margin: 20px auto;
+    margin-top: 100px;
+    height: 200px;
+    width: 300px;
+    text-align: center;
+    background-color: #gray;
+    color: #black;
+    font-family: 'Lato', sans-serif;
+
+    .return {
+        padding: 12px;
+        border-radius: 13px;
+        box-sizing: border-box;
+        cursor: pointer;
+        background-color: #BDC6EB;
+        color: black;
+        border: none;
+        font-family: 'Lato', sans-serif;
+        font-weight: bold;
+        width: 115px;
+        margin-right: 10px;
+        margin-top: 20px;
+    }
+}
 
 
 
