@@ -42,6 +42,7 @@ public class loginServlet extends HttpServlet {
         if (adminUsername.equals(enteredUsername) && adminPassword.equals(enteredPassword)) {
             HttpSession session = request.getSession();
             session.setAttribute("loggedIn", true);
+            session.setAttribute("UserType", "Admin");
             session.setAttribute("Admin", true);
             response.sendRedirect("settingsAdmin.jsp");
         } // Check if the entered username and password match any pair in the HashSet
@@ -52,12 +53,27 @@ public class loginServlet extends HttpServlet {
                     HttpSession session = request.getSession();
                     session.setAttribute("loggedIn", true);
                     session.setAttribute("User", true);
+                    session.setAttribute("UserType", "User");
                     response.sendRedirect("dashboard.jsp");
                     return; // Exit the loop if a match is found
                 }
             }
         }
     }
+    
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+                
+        // Retrieve the entered username and password
+        String isGuest = request.getParameter("isGuest");
+        if (isGuest != null){
+            HttpSession session = request.getSession();
+            session.setAttribute("UserType", "Guest");
+            session.setAttribute("Guest", true);
+            response.sendRedirect("dashboard.jsp");
+        }
+    }
+
 
     public class User {
 

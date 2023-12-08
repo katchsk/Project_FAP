@@ -39,3 +39,7 @@ function changeQuestion(action) {
 function goToPlay(){
     window.location.href="quiz.jsp";
 }
+
+function goToSettings(){
+    window.location.href="settingsUser.jsp";
+}

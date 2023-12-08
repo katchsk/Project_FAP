@@ -4,6 +4,32 @@
     Author     : Ian Cariaga
 --%>
 
+<%@ page session="false" %>
+
+<%
+    HttpSession initialSession = request.getSession(false);
+
+    if (initialSession == null) {
+        response.sendRedirect("index.jsp");
+    } else {
+        boolean isAdmin = false;
+        boolean isUser = false;
+
+        if (initialSession.getAttribute("Admin") != null) {
+            isAdmin = (Boolean) initialSession.getAttribute("Admin");
+        }
+
+        if (initialSession.getAttribute("User") != null) {
+            isUser = (Boolean) initialSession.getAttribute("User");
+        }
+
+        if (!isUser) {
+            response.sendRedirect("index.jsp");
+        }
+    }
+
+%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -19,7 +45,7 @@
         <div class="header">
             <div class="left-header">
                 <img src="images/logo.png" alt="Flashwiz Logo">
-                <p id='websiteName'>FlashWiz</p>
+                <p id='websiteName'><%= getServletContext().getInitParameter("WebsiteTitle") %></p>
             </div>
             <p id='userType'>User</p>
         </div>
@@ -27,9 +53,9 @@
 
         <div id="settings">
             <h1>Website Settings</h1>
-            <form action="save-settings" method="post">
+            <form action="SaveUserSettingsServlet" method="post">
                 <label for="quizDuration">Quiz Duration (in minutes)</label>
-                <select id="quizDuration" name="quizDuration">
+                <select id="quizDuration" name="duration">
                     <option value="5">5 minutes</option>
                     <option value="10">10 minutes</option>
                     <option value="15">15 minutes</option>  
@@ -37,8 +63,8 @@
 
                 <label for="questionRandomness">Question Randomness</label>
                 <select id="questionRandomness" name="questionRandomness">
-                    <option value="sorted">Sorted</option>
-                    <option value="randomized">Randomized</option>
+                    <option value="0">Sorted</option>
+                    <option value="1">Randomized</option>
                 </select><br>
 
                 <input type="submit" value="Save">

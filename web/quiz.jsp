@@ -14,6 +14,7 @@
     } else {
         boolean isAdmin = false;
         boolean isUser = false;
+        boolean isGuest = false;
 
         if (initialSession.getAttribute("Admin") != null) {
             isAdmin = (Boolean) initialSession.getAttribute("Admin");
@@ -22,9 +23,19 @@
         if (initialSession.getAttribute("User") != null) {
             isUser = (Boolean) initialSession.getAttribute("User");
         }
+        
+        if (initialSession.getAttribute("Guest") != null) {
+            isGuest= (Boolean) initialSession.getAttribute("Guest");
+        }
 
         if (isAdmin) {
             response.sendRedirect("settingsAdmin.jsp");
+            return;
+        }
+        
+        if (isGuest){
+            response.sendRedirect("dashboard.jsp");
+            return;
         }
     }
 
@@ -46,9 +57,9 @@
          <div class="header">
             <div class="left-header">
                 <img src="images/logo.png" alt="Flashwiz Logo">
-                <p id='websiteName'>FlashWiz</p>
+                <p id='websiteName'><%= getServletContext().getInitParameter("WebsiteTitle") %></p>
             </div>
-            <p id='userType'>User</p>
+            <p id='userType'><%= initialSession.getAttribute("UserType")%></p>
         </div>
 
         <div id="countdown-container">
@@ -126,6 +137,30 @@
 
                 console.log(cardList);
             }
+            
+            const countdownElem = document.getElementById("countdown");
+            
+            let defaultCountdown = <%= initialSession.getAttribute("duration") %>
+            let questionRandomness = <%= initialSession.getAttribute("questionRandomness") %>
+         
+            if (defaultCountdown == null){
+                defaultCountdown = 30;
+            } else {
+                defaultCountdown *= 60;
+            }
+            
+            if (questionRandomness == null){
+                questionRandomness = 0;
+            }
+            
+            if (questionRandomness == 1) {
+                for (var i = cardList.length - 1; i > 0; i--) {
+                    var j = Math.floor(Math.random() * (i + 1));
+                    var temp = cardList[i];
+                    cardList[i] = cardList[j];
+                    cardList[j] = temp;
+                }
+            }
 
             let cardIndex = 0;
             let currentCard = null;
@@ -154,6 +189,21 @@
             function clamp(value, minimum, maximum) {
                 return Math.min(Math.max(value, minimum), maximum);
             }
+            
+            countdownElem.textContent = defaultCountdown;
+            
+            let t = setInterval(function() {
+                
+                defaultCountdown -= 1;
+                countdownElem.textContent = defaultCountdown;
+                if (defaultCountdown < 0) {
+                    alert("You ran out of time!");
+                    window.location.href= "quiz.jsp";
+                    
+                    clearInterval(t);
+                }
+               
+            }, 1000);
 
         </script>
     </body>
