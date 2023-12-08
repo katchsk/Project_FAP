@@ -52,12 +52,12 @@
                 <div class="quizCard">
                     <div class="question-side">
                         <div id="questionBlock">
-                            <h2 id="questionText"></h2>
+                            <div id="question-answer"><h2 id="questionText"></h2></div>
                         </div>
                     </div>
                     <div class="answer-side">
                         <div id="answerBlock">
-                            <h2 id="answerText"></h2>
+                            <div id="question-answer"><h2 id="answerText"></h2></div>
                         </div>
                     </div>
                 </div>

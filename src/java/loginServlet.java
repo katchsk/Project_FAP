@@ -24,6 +24,7 @@ public class loginServlet extends HttpServlet {
         // Add sample username-password pairs to the HashSet
         users.add(new User("user1", "password1"));
         users.add(new User("user2", "password2"));
+        users.add(new User("user3", "password3"));
     }
     
     @Override
