@@ -246,6 +246,23 @@ body {
     margin-bottom: 10px;
 }
 
+#countdown-container {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    width: 10%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: inline-block; /* Make the container only as wide as its content */
+    position: absolute;
+    top: 80px; /* Adjust the top distance as needed */
+    left: 10px; /* Adjust the left distance as needed */
+    z-index: 999; /* Set a higher z-index to make sure it appears above other elements */
+    text-align: center;
+    font-size: 40px;
+    font-family: 'Lato', sans-serif;
+}
+
 /* settingUser.jsp, settingsAdmin.jsp */
 #settings {
     display: flex;

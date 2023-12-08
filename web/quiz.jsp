@@ -8,8 +8,8 @@
 
 <%
     HttpSession initialSession = request.getSession(false);
-    
-    if (initialSession == null){
+
+    if (initialSession == null) {
         response.sendRedirect("index.jsp");
     } else {
         boolean isAdmin = false;
@@ -18,12 +18,12 @@
         if (initialSession.getAttribute("Admin") != null) {
             isAdmin = (Boolean) initialSession.getAttribute("Admin");
         }
-        
-        if (initialSession.getAttribute("User") != null){
+
+        if (initialSession.getAttribute("User") != null) {
             isUser = (Boolean) initialSession.getAttribute("User");
         }
-        
-        if (isAdmin){
+
+        if (isAdmin) {
             response.sendRedirect("settingsAdmin.jsp");
         }
     }
@@ -47,6 +47,11 @@
             <img src="images/logo.png" alt="Flashwiz Logo">
             <p id="websiteName">Flashwiz</p>
         </div>
+
+        <div id="countdown-container">
+            <p id="countdown">5:00</p>
+        </div>
+
         <div id="quizContainer">
             <div id="quizBox" onclick="flipCard()">
                 <div class="quizCard">
@@ -78,17 +83,16 @@
         <script>
             <%@ page import="java.util.ArrayList" %>
 
-            <% 
-                ArrayList<ArrayList<String>> arrayFromServer = null;
-                if (initialSession != null){
+            <%                ArrayList<ArrayList<String>> arrayFromServer = null;
+                if (initialSession != null) {
                     arrayFromServer = (ArrayList<ArrayList<String>>) initialSession.getAttribute("CardList");
                 }
-                if (arrayFromServer == null){
+                if (arrayFromServer == null) {
                     response.sendRedirect("dashboard.jsp");
                 }
             %>
 
-    //        <% 
+            //        <%
                 StringBuilder jsArray = new StringBuilder("[");
                 if (arrayFromServer != null) {
                     for (int i = 0; i < arrayFromServer.size(); i++) {
@@ -109,42 +113,42 @@
                 }
             %>
 
-            let arrayString = '<%= jsArray.toString() %>';
+            let arrayString = '<%= jsArray.toString()%>';
             let cardList = null;
 
             if (arrayString != '[') {
                 let jsonArray = arrayString.replace(/'/g, '"'); // Replace single quotes with double quotes
                 cardList = JSON.parse(jsonArray);
 
-                console.log(cardList);  
-            }  
-            
+                console.log(cardList);
+            }
+
             let cardIndex = 0;
             let currentCard = null;
-            
+
             updateVisibleCard();
-            
-            function updateVisibleCard(){
+
+            function updateVisibleCard() {
                 resetCardFlip();
                 currentCard = cardList[cardIndex];
                 const questionElem = document.getElementById("questionText");
                 const answerElem = document.getElementById("answerText");
                 questionElem.textContent = currentCard[0];
-                answerElem.textContent= currentCard[1];
+                answerElem.textContent = currentCard[1];
             }
-            
-            function nextFlashcard(){
+
+            function nextFlashcard() {
                 cardIndex = clamp(cardIndex + 1, 0, cardList.length - 1);
                 updateVisibleCard();
             }
-            
-            function prevFlashcard(){
+
+            function prevFlashcard() {
                 cardIndex = clamp(cardIndex - 1, 0, cardList.length - 1);
                 updateVisibleCard();
             }
-            
+
             function clamp(value, minimum, maximum) {
-              return Math.min(Math.max(value, minimum), maximum);
+                return Math.min(Math.max(value, minimum), maximum);
             }
 
         </script>
