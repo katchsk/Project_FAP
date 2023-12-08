@@ -84,6 +84,14 @@
         <url-pattern>/SaveAdminSettings</url-pattern>
     </servlet-mapping>
     <error-page>
+        <error-code>401</error-code> 
+        <location>/authenticationError.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>400</error-code> 
+        <location>/nullValueError.jsp</location>
+    </error-page>
+    <error-page>
         <error-code>404</error-code> 
         <location>/error404.jsp</location>
     </error-page>

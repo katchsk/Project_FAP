@@ -60,8 +60,10 @@ public class loginServlet extends HttpServlet {
                 response.sendRedirect("dashboard.jsp");
             }
         } catch (NullValueException e) {
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             response.sendRedirect("nullValueError.jsp");
         } catch (AuthenticationException e) {
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             response.sendRedirect("authenticationError.jsp");
         }
     }
