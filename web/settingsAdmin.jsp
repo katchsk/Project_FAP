@@ -8,8 +8,8 @@
 
 <%
     HttpSession initialSession = request.getSession(false);
-    
-    if (initialSession == null){
+
+    if (initialSession == null) {
         response.sendRedirect("index.jsp");
     } else {
         boolean isUser = false;
@@ -17,8 +17,8 @@
         if (initialSession.getAttribute("User") != null) {
             isUser = (Boolean) initialSession.getAttribute("Admin");
         }
-        
-        if (isUser){
+
+        if (isUser) {
             response.sendRedirect("dashboard.jsp");
         }
     }
@@ -38,11 +38,8 @@
     </head>
     <body>
         <div id="header">
-            <div id="left-header">
-                <img src="images/logo.png" alt="Flashwiz Logo">
-                <p id='websiteName'>FlashWiz</p>
-            </div>
-            <p id='userType'>Admin</p>
+            <img src="images/logo.png" alt="Flashwiz Logo">
+            <p id='websiteName'>FlashWiz (Admin)</p>
         </div>
 
 
@@ -51,6 +48,7 @@
             <form action="save-settings" method="post">
                 <label for="quizDuration">Quiz Duration (in minutes)</label>
                 <select id="quizDuration" name="quizDuration">
+                    <option value="Default">Default</option>
                     <option value="5">5 minutes</option>
                     <option value="10">10 minutes</option>
                     <option value="15">15 minutes</option>  
@@ -58,6 +56,7 @@
 
                 <label for="questionRandomness">Question Randomness</label>
                 <select id="questionRandomness" name="questionRandomness">
+                    <option value="Default">Default</option>
                     <option value="sorted">Sorted</option>
                     <option value="randomized">Randomized</option>
                 </select><br>

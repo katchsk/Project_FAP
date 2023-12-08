@@ -15,11 +15,6 @@
     padding: 0 20px;
 }
 
-#left-header {
-    display: flex;
-    align-items: center;
-}
-
 #header img {
     max-height: 5vw; /* Use viewport width for responsive image height */
     margin-left: 10px;
@@ -33,6 +28,9 @@
     justify-content: flex-end;
     align-items: center;
     padding: 0 20px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
 /* index.jsp */
@@ -233,18 +231,26 @@ body {
     margin-right: 270px;
 }
 
-.home{
-    padding: 10px 20px;
+.home {
+    padding: 12px;
     font-size: 16px;
     cursor: pointer;
-    background-color: #3498db;
-    color: #fff;
+    background-color: #BDC6EB;
+    color: #black;
     border: none;
-    border-radius: 5px;
-    margin-left: 10px;
+    border-radius: 13px;
+    margin-right: auto;
     margin-top: 10px;
     margin-bottom: 10px;
+    margin-left: 20px;
+    width: 100px;
 }
+
+.home:hover {
+    background-color: white;
+    transform: scale(1.1);
+}
+
 
 /* settingUser.jsp, settingsAdmin.jsp */
 #settings {
@@ -313,13 +319,9 @@ input[type="submit"]:hover {
     margin-right: 10px;
 }
 
-.logout-container {
-    margin-left: auto;
-}
-
 .logout {
     padding: 12px;
-    border-radius: 10px;
+    border-radius: 13px;
     box-sizing: border-box;
     cursor: pointer;
     background-color: #BDC6EB;
@@ -327,7 +329,8 @@ input[type="submit"]:hover {
     border: none;
     font-family: 'Lato', sans-serif;
     font-weight: bold;
-    width: 100%;
+    width: 115px;
+    margin-right: 50px;
 }
 
 .logout:hover {
