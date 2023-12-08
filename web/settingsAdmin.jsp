@@ -72,6 +72,7 @@
             </div>
         </div>
          <div class="footer">
+             <p><%= getServletContext().getInitParameter("Copyright") %></p>
             <form action="Logout" method="post">
                 <button type="submit" class="logout">Logout</button>
             </form>

@@ -75,7 +75,7 @@
             </div>
         </div>
         <div class="footer">
-            
+            <p><%= getServletContext().getInitParameter("Copyright") %></p>
         </div>
     </body>
 </html>

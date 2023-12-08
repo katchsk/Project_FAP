@@ -4,6 +4,11 @@
         <param-name>WebsiteTitle</param-name>
         <param-value>Flashwiz</param-value>
     </context-param>   
+    
+    <context-param>
+        <param-name>Copyright</param-name>
+        <param-value>©2023 Group# - 2CSF </param-value>
+    </context-param>   
 
     <context-param>
         <param-name>QuizDuration</param-name>

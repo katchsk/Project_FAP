@@ -36,10 +36,3 @@ function changeQuestion(action) {
     window.location.href = "quiz.jsp?currentCardIndex=" + currentCardIndex;
 }
 
-function goToPlay(){
-    window.location.href="quiz.jsp";
-}
-
-function goToSettings(){
-    window.location.href="settingsUser.jsp";
-}

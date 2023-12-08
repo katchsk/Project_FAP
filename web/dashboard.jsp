@@ -7,6 +7,8 @@
 
 <%
     HttpSession initialSession = request.getSession(false);
+    
+    String UserType = "";
 
     if (initialSession == null) {
         response.sendRedirect("index.jsp");
@@ -20,6 +22,8 @@
         if (isAdmin) {
             response.sendRedirect("settingsAdmin.jsp");
         }
+        
+        UserType = (String) initialSession.getAttribute("UserType");
     }
 
 %>
@@ -329,6 +333,7 @@
         </div>
 
         <div class="footer">
+            <p><%= getServletContext().getInitParameter("Copyright") %></p>
             <form action="Logout" method="post">
                 <button type="submit" class="logout">Logout</button>
             </form>
@@ -357,6 +362,27 @@
         </div>
         <script  src="scripts/script.js"></script>
         <script>
+            
+            
+            let UserType = "<%= UserType%>";
+            
+            function goToPlay(){
+                if (UserType == "Guest"){
+                    alert("You must sign in to use this feature!");
+                    return;
+                }
+                
+                window.location.href="quiz.jsp";
+            }
+
+            function goToSettings(){
+               if (UserType == "Guest"){
+                   alert("You must sign in to use this feature!");
+                   return;
+               }
+               window.location.href="settingsUser.jsp";
+            }
+            
             // Function to display the modal
             function openModal() {
                 var modal = document.getElementById("myModal");

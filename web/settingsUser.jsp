@@ -71,6 +71,7 @@
             </form>
         </div>
         <div class="footer">
+            <p><%= getServletContext().getInitParameter("Copyright") %></p>
             <form action="dashboard.jsp" method="post">
                 <button type="submit" class="home">Home</button>
             </form>
