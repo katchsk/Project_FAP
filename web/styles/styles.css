@@ -50,7 +50,7 @@
 .footer p {
     font-family: 'Poppins', sans-serif;
     color: white;
-    margin-right: 72%;
+    margin-right: 70vw;
 }
 
 .footerIndex p{
@@ -85,6 +85,7 @@ body {
 #logoWeb img {
     max-height: 15vw; /* Use viewport width for responsive image height */
     border-radius: 50%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 #websiteNameIndex {
@@ -204,8 +205,8 @@ body {
     white-space: nowrap; /* Prevent line breaks within the container */
     position: fixed;
     left: 20px; /* Adjust the left value as needed */
-    top: 80px; /* Adjust the top value as needed */
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); /* Increase size and opacity for a more visible 3D effect */
+    top: 12vh; /* Adjust the top value as needed */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Increase size and opacity for a more visible 3D effect */
 }
 
 #countdown {
@@ -354,7 +355,7 @@ input[type="submit"]:hover {
     border: none;
     font-family: 'Lato', sans-serif;
     font-weight: bold;
-    width: 115px;
+    width: 10vw;
     margin-right: 50px;
     transition: background-color 0.3s ease;
 }
