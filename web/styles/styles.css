@@ -165,6 +165,7 @@ body {
 #quizBox {
     height: 400px; /* Set a fixed height for the quiz box */
     position: relative;
+    margin: auto;
 }
 
 .quizCard {

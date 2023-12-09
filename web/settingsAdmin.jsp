@@ -11,6 +11,7 @@
 
     if (initialSession == null) {
         response.sendRedirect("index.jsp");
+        return;
     } else {
         boolean isAdmin = false;
 
